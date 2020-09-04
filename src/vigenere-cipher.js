@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 class VigenereCipheringMachine {
   constructor(bool) {
     if (bool === false || bool === 'false') this.modification = 'reverse';
@@ -41,3 +42,19 @@ class VigenereCipheringMachine {
 }
 
 module.exports = VigenereCipheringMachine;
+=======
+const CustomError = require("../extensions/custom-error");
+
+class VigenereCipheringMachine {
+  encrypt() {
+    throw new CustomError('Not implemented');
+    // remove line with error and write your code here
+  }    
+  decrypt() {
+    throw new CustomError('Not implemented');
+    // remove line with error and write your code here
+  }
+}
+
+module.exports = VigenereCipheringMachine;
+>>>>>>> ddb2f956b900f57b8b94d48d5fa58f0d4ded9ebe

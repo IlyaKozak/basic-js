@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 module.exports = function transform(arr) {
   if (!(arr instanceof Array)) throw new Error('Not an Array!');
   const result = [];
@@ -24,3 +25,11 @@ module.exports = function transform(arr) {
   }
   return result;
 };
+=======
+const CustomError = require("../extensions/custom-error");
+
+module.exports = function transform(/* arr */) {
+  throw new CustomError('Not implemented');
+  // remove line with error and write your code here
+};
+>>>>>>> ddb2f956b900f57b8b94d48d5fa58f0d4ded9ebe

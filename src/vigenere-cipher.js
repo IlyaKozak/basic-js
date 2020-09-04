@@ -1,4 +1,5 @@
-<<<<<<< HEAD
+const CustomError = require('../extensions/custom-error');
+
 class VigenereCipheringMachine {
   constructor(bool) {
     if (bool === false || bool === 'false') this.modification = 'reverse';
@@ -6,7 +7,8 @@ class VigenereCipheringMachine {
   }
 
   encrypt(message, key) {
-    if (message === undefined || key === undefined) throw new Error('Need message and key as args');
+    if (message === undefined || key === undefined)
+      throw new Error('Need message and key as args');
     message = message.toUpperCase();
     key = key.toUpperCase();
     const abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
@@ -16,15 +18,22 @@ class VigenereCipheringMachine {
       if (abc.indexOf(message[i]) === -1) {
         encryptedMessage += message[i];
       } else {
-        encryptedMessage += abc[(abc.indexOf(message[i]) + abc.indexOf(key[keyIdx % key.length])) % abc.length];
+        encryptedMessage +=
+          abc[
+            (abc.indexOf(message[i]) + abc.indexOf(key[keyIdx % key.length])) %
+              abc.length
+          ];
         keyIdx++;
       }
     }
-    return (this.modification === 'reverse') ? [...encryptedMessage].reverse().join('') : encryptedMessage;
+    return this.modification === 'reverse'
+      ? [...encryptedMessage].reverse().join('')
+      : encryptedMessage;
   }
 
   decrypt(encryptedMessage, key) {
-    if (encryptedMessage === undefined || key === undefined) throw new Error('Need encryptedMessage and key as args');
+    if (encryptedMessage === undefined || key === undefined)
+      throw new Error('Need encryptedMessage and key as args');
     key = key.toUpperCase();
     const abc = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
     let message = '';
@@ -33,28 +42,20 @@ class VigenereCipheringMachine {
       if (abc.indexOf(encryptedMessage[i]) === -1) {
         message += encryptedMessage[i];
       } else {
-        message += abc[(abc.indexOf(encryptedMessage[i]) + abc.length - abc.indexOf(key[keyIdx % key.length])) % abc.length];
+        message +=
+          abc[
+            (abc.indexOf(encryptedMessage[i]) +
+              abc.length -
+              abc.indexOf(key[keyIdx % key.length])) %
+              abc.length
+          ];
         keyIdx++;
       }
     }
-    return (this.modification === 'reverse') ? [...message].reverse().join('') : message;
+    return this.modification === 'reverse'
+      ? [...message].reverse().join('')
+      : message;
   }
 }
 
 module.exports = VigenereCipheringMachine;
-=======
-const CustomError = require("../extensions/custom-error");
-
-class VigenereCipheringMachine {
-  encrypt() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
-  }    
-  decrypt() {
-    throw new CustomError('Not implemented');
-    // remove line with error and write your code here
-  }
-}
-
-module.exports = VigenereCipheringMachine;
->>>>>>> ddb2f956b900f57b8b94d48d5fa58f0d4ded9ebe
